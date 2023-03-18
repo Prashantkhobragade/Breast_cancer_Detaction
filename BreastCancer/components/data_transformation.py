@@ -18,7 +18,7 @@ class DataTransformationconfig:
 
 class DataTransformation:
     def __init__(self):
-        self.DataTransformationConfig = DataTransformationconfig()
+        self.data_transformation_config = DataTransformationconfig()
 
     def get_data_transformer_object(self):
         '''
@@ -39,7 +39,7 @@ class DataTransformation:
                 'concave points_worst','symmetry_worst','fractal_dimension_worst'
                 ]
             
-            categorical_columns =['diagnosis']
+#            categorical_columns =['diagnosis']
 
             num_pipline = Pipeline(
                 steps=[
@@ -54,14 +54,14 @@ class DataTransformation:
                 ]
             )
 
-            logging.info(f"Categorical columns : {categorical_columns}")
+#            logging.info(f"Categorical columns : {categorical_columns}")
 
             logging.info(f"Numerical columns : {numerical_columns}")
 
             preprocessor = ColumnTransformer(
                 [
                 ("num_pipline",num_pipline,numerical_columns),
-                ("cat_pipline",cat_pipline,categorical_columns)
+#                ("cat_pipline",cat_pipline,categorical_columns)
                 ]
             )
 
@@ -82,7 +82,7 @@ class DataTransformation:
 
             preprocesssing_obj = self.get_data_transformer_object()
 
-            target_column_name = "diagnosis"
+            target_column_name = "diagnosis_M"
             numerical_columns = [
                 'radius_mean','texture_mean',
                 'perimeter_mean','area_mean',

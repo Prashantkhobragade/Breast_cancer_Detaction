@@ -34,6 +34,9 @@ class DataIngestion:
 
             df.to_csv(self.ingestion_config.raw_data_path, index = False, header =True)
 
+            df = pd.get_dummies(data=df,drop_first=True)
+            logging.info("Encoded categorical features to numerical features")
+
             logging.info("Train test split initiated")
             train_set, test_set = train_test_split(df,test_size=0.2, random_state=42)
 
@@ -57,4 +60,4 @@ if __name__ == "__main__":
     train_data, test_data = obj.initiate_data_ingestion()
 
     data_transformation = DataTransformation()
-    train_arr, test_arr = data_transformation.initiate_data_transformation(train_data, test_data)
+    train_arr, test_arr,_ = data_transformation.initiate_data_transformation(train_data, test_data)
