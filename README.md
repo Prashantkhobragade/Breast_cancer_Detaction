@@ -20,6 +20,7 @@ conda activate sensor
 ### Step 3 - Install the requirements
 ```bash
 pip install -r requirements.txt
+```
 
 ### Step 4 - Run the application server
 ```bash
